@@ -18,12 +18,21 @@ export const CLEAN_PHONES = "CLEAN_PHONES";
 export const FILTER_CAPACITY = "FILTER_CAPACITY";
 export const POST_USER = "POST_USER";
 export const GET_USERS = "GET_USERS";
+export const GET_USER = "GET_USER";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOG_OUT = "LOGOUT";
+export const GET_REVIEWS=" GET_REVIEWS"
 
-const URL_BACK = "https://phonezoneback-production.up.railway.app"
 
+// const { URL_BACK } = process.env;
+
+const URL_BACK = `https://phonezoneback-production.up.railway.app/`
+
+export const POST_REVIEW="POST_REVIEW"
+
+
+// const URL_BACK = `http://localhost:3001`
   export function getPhones(){
     return async function (dispatch) {
       let Json = await axios.get(`${URL_BACK}/product`);
@@ -153,6 +162,33 @@ const URL_BACK = "https://phonezoneback-production.up.railway.app"
     }
 }
 
+// - - - RUTAS PARA EL CARRITO DE LA BASE DE DATOS - - - //
+
+export function PostProductCart(payload){
+
+  return async function(){
+    await axios.post('${URL_BACK}/cart/addProduct', payload);
+  }
+}
+
+export function getProductCart(payload){
+  return async function(){
+    return await axios.get(`${URL_BACK}/cart/getProduct/${payload}`)
+  }
+}
+
+export function deleteProductCart(data){
+  return async function(){
+    await axios.delete(`${URL_BACK}/cart/deleteProduct`, { data });
+  }
+}
+
+export function PostMercadoPago(payload){
+  return async function(){
+    return axios.post(`${URL_BACK}/orders`, payload)
+  }
+}
+
 //rutas user
 
 export function PostUser(payload) {
@@ -168,6 +204,16 @@ export function GetUsers(){
       type: GET_USERS,
       payload: Json.data,
     });
+  }
+}
+
+export function getUser(payload){
+  return async function(dispatch){
+    let json = await axios.get(`${URL_BACK}/user/?name=${payload}`)
+    return dispatch({
+      type: GET_USER,
+      payload: json.data
+    })
   }
 }
 
@@ -187,3 +233,36 @@ export function LogOut(){
     })
   }
 }
+
+//////*REVIEWS///////
+export function getReviews(id) {
+  return (dispatch) => {
+      axios.get(`${URL_BACK}/reviews/${id}`)
+          .then(response => dispatch(
+              {
+                  type:GET_REVIEWS ,
+                  payload: response.data
+              },
+              console.log("reviews:",response.data)
+          ))
+          .catch(err => console.log(err))
+  }
+}
+
+export const postReviews =  (id,payload) => {
+  try {
+    return async (dispatch) => {
+    const resultado = await axios.post(`http://localhost:3001/reviews/${id}`,payload)
+    console.log(resultado.data)
+     dispatch({
+      type:POST_REVIEW, 
+      payload:resultado.data
+    })
+    }
+  
+  } catch (error) {
+    console.log(error.message)
+  }
+  
+}
+

@@ -14,13 +14,16 @@ import{
 
     GET_USERS,
     POST_USER,
+    GET_USER,
 
     CLEAN_DETAIL,
     CLEAN_PHONES,
     FILTER_CAPACITY,
 
     LOGIN_SUCCESS,
-    LOG_OUT
+    LOG_OUT,
+    GET_REVIEWS,
+    POST_REVIEW
 }from"../actions/index"
 
 const initialState = {
@@ -32,6 +35,8 @@ const initialState = {
   Color:[],
   details: [],
   Users: [],
+  Reviews:[],
+  msg:null
 };
 
 function rootReducer(state = initialState, action){
@@ -39,7 +44,6 @@ function rootReducer(state = initialState, action){
     switch (action.type) {
   
       case GET_PHONES:
-       
         return{
           ...state,
           Phones: action.payload,
@@ -65,6 +69,12 @@ function rootReducer(state = initialState, action){
           Users: action.payload
         };
 
+      case GET_USER:
+        return{
+          ...state,
+          Users: action.payload
+        }
+
       case CLEAN_DETAIL:
         return{
           ...state,
@@ -80,6 +90,8 @@ function rootReducer(state = initialState, action){
         case LOGIN_SUCCESS:
 
           window.localStorage.setItem('user-log', JSON.stringify(action.payload));
+
+          console.log("action", action.payload)
 
           return{
             ...state,
@@ -135,7 +147,7 @@ function rootReducer(state = initialState, action){
       //reducers de ordenamiento
   
       case ORDER_BY_NAME:
-        console.log("1");
+
         let order =
           action.payload === "asc"
             ? state.PhonesCopy.sort(function (a, b) {
@@ -230,21 +242,32 @@ function rootReducer(state = initialState, action){
           PhonesCopy: TypePhonesFilter,
         };
 
-      case FILTER_CAPACITY:
+        case FILTER_CAPACITY:
 
-          const AllCap = state.PhonesCopy;
-          console.log("Capacidad: ", action.payload);
-          const TypePhonesFilterCapacidad =
-          action.payload === "all"
-            ? AllCap
-            : AllCap?.filter((t) => (state.Capacity[t.storageCapacityId-1]?.capacity)?.includes(action.payload));
+        const AllCap = state.PhonesCopy;
+        const TypePhonesFilterCapacidad =
+        action.payload === "all"
+          ? AllCap
+          : AllCap?.filter((t) => (state.Capacity[t.storageCapacityId-1]?.capacity) == (action.payload))
 
-        return {
+      return {
+        ...state,
+        PhonesCopy: TypePhonesFilterCapacidad,
+      };
+
+      case GET_REVIEWS:
+        return{
           ...state,
-          PhonesCopy: TypePhonesFilterCapacidad,
+          Reviews: action.payload,
+         
         };
-
-
+        case POST_REVIEW:
+          // console.log("msg:", action.payload)
+          return {
+            ...state,
+            msg:action.payload
+          };
+  
   
       default: {
         return state;
