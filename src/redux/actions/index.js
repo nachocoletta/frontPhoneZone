@@ -27,7 +27,7 @@ export const GET_REVIEWS=" GET_REVIEWS"
 
 // const { URL_BACK } = process.env;
 
-const URL_BACK = `https://phonezoneback-production.up.railway.app/`
+const URL_BACK = `https://phonezoneback-production.up.railway.app`
 
 export const POST_REVIEW="POST_REVIEW"
 
@@ -167,7 +167,7 @@ export const POST_REVIEW="POST_REVIEW"
 export function PostProductCart(payload){
 
   return async function(){
-    await axios.post('${URL_BACK}/cart/addProduct', payload);
+    await axios.post(`${URL_BACK}/cart/addProduct`, payload);
   }
 }
 
@@ -252,7 +252,7 @@ export function getReviews(id) {
 export const postReviews =  (id,payload) => {
   try {
     return async (dispatch) => {
-    const resultado = await axios.post(`http://localhost:3001/reviews/${id}`,payload)
+    const resultado = await axios.post(`${URL_BACK}/reviews/${id}`,payload)
     console.log(resultado.data)
      dispatch({
       type:POST_REVIEW, 
