@@ -27,7 +27,7 @@ export const GET_REVIEWS=" GET_REVIEWS"
 
 // const { URL_BACK } = process.env;
 
-const URL_BACK = `https://phonezoneback-production.up.railway.app`
+const URL_BACK = `http://localhost:3001`
 
 export const POST_REVIEW="POST_REVIEW"
 
@@ -77,7 +77,7 @@ export const POST_REVIEW="POST_REVIEW"
 
   export function getBrands() {
     return async function (dispatch) {
-      let json = await axios.get(`${URL_BACK}/brand`);
+      let json = await axios.get(`${URL_BACK}/brand`)
       dispatch({
         type: GET_BRANDS,
         payload: json.data,
@@ -167,7 +167,7 @@ export const POST_REVIEW="POST_REVIEW"
 export function PostProductCart(payload){
 
   return async function(){
-    await axios.post(`${URL_BACK}/cart/addProduct`, payload);
+    return await axios.post(`${URL_BACK}/cart/addProduct`, payload);
   }
 }
 
@@ -179,7 +179,13 @@ export function getProductCart(payload){
 
 export function deleteProductCart(data){
   return async function(){
-    await axios.delete(`${URL_BACK}/cart/deleteProduct`, { data });
+    return await axios.delete(`${URL_BACK}/cart/deleteProduct`, { data });
+  }
+}
+
+export function UpdateStockDB(data){
+  return async function(){
+    return await axios.put(`${URL_BACK}/cart/updateProduct`, data);
   }
 }
 
@@ -204,6 +210,18 @@ export function GetUsers(){
       type: GET_USERS,
       payload: Json.data,
     });
+  }
+}
+
+export function PutUserAdminDashBoard(idUser){
+  return async function(dispatch){
+      return axios.put(`${URL_BACK}/user/admin/${idUser}`)
+  }
+}
+
+export function PutUserBanDashBoard(idUser){
+  return async function(dispatch){
+      return axios.put(`${URL_BACK}/user/banned/${idUser}`)
   }
 }
 
@@ -253,11 +271,12 @@ export const postReviews =  (id,payload) => {
   try {
     return async (dispatch) => {
     const resultado = await axios.post(`${URL_BACK}/reviews/${id}`,payload)
-    console.log(resultado.data)
-     dispatch({
-      type:POST_REVIEW, 
-      payload:resultado.data
-    })
+    // dispatch({
+    //   type:POST_REVIEW, 
+    //   payload:resultado.data
+    // })
+    // console.log("resultado.data es:", resultado.data)
+    return resultado
     }
   
   } catch (error) {
