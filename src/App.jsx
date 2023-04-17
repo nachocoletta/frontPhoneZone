@@ -52,7 +52,7 @@ export default function App() {
   return (
     <div className="App">
       <Routes>
-        //Routas Users
+        {/* //Routas Users */}
         <Route exact path="/" element={<Home />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/Store" element={<Store />} />
@@ -68,7 +68,7 @@ export default function App() {
         <Route path="/reset" element={<Reset />} />
         <Route path="/Profile" element={<Profile />} />
 
-        //Rutas admin
+        {/* //Rutas admin */}
         <Route element={<RutePrivade />}>
           <Route path="/DashBoard" element={<Dashboard />} />
           <Route path="/UsersDashBoard" element={<UsersDashBoard />} />
