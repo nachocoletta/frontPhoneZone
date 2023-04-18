@@ -26,7 +26,7 @@ import UsersDashBoard from "./views/Dashboard/Users/User";
 import PasswordReset from "./components/ActPassword/PasswordReset";
 import Reset from "./components/ActPassword/Reset";
 import { CreateReviews } from "./components/Reviews/CreateReviews";
-import RutePrivade from "./components/rutePrivade/RutePrivade";
+import RutePrivade from "./components/RutePrivade/RutePrivade";
 import ProductDashBoard from "./views/Dashboard/Product/Products";
 import Profile from "./views/Profile/Profile";
 import QA from './views/QA/QA'
@@ -77,13 +77,13 @@ export default function App(){
         
 
 
-        {/* <Route element={<RutePrivade />}> */}
+        <Route element={<RutePrivade />}>
           <Route path="/DashBoard" element={<Dashboard />} />
           <Route path="/UsersDashBoard" element={<UsersDashBoard />} />
           <Route path="/ProductsDash" element={<ProductDashBoard />} />
           <Route exact path="/form-product" element={<CreateProduct />} />
           <Route exact path="/update-product/:id" element={<UpdateProduct />} />
-        {/* </Route> */}
+        </Route>
        
       </Routes>
     </div>
