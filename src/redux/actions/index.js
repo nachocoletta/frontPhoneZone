@@ -14,7 +14,7 @@ export const GET_COLORES = "GET_COLORES";
 export const GET_CAPACITY = "GET_CAPACITY";
 
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-export const CLEAN_PHONES = "CLEAN_PHONES";
+export const CLEAN_BROAD = "CLEAN_BROAD";
 export const FILTER_CAPACITY = "FILTER_CAPACITY";
 export const POST_USER = "POST_USER";
 export const GET_USERS = "GET_USERS";
@@ -154,13 +154,12 @@ export const POST_REVIEW="POST_REVIEW"
     };
   }
 
-  export function CleanPhones(){
+  export function CleanBroad(){
 
     return{
-        type: CLEAN_PHONES,
-        payload: [],
+        type: CLEAN_BROAD,
     }
-}
+  }
 
 // - - - RUTAS PARA EL CARRITO DE LA BASE DE DATOS - - - //
 
@@ -235,6 +234,12 @@ export function getUser(payload){
   }
 }
 
+export function getOrders(id){
+  return async function(){
+    return await axios.get(`${URL_BACK}/orders/${id}`)
+  }
+}
+
 export function LoginSuccess(data){
   return async function(dispatch){
     dispatch({
@@ -249,6 +254,12 @@ export function LogOut(){
     dispatch({
       type: LOG_OUT,
     })
+  }
+}
+
+export function postSupport(data){
+  return async function(){
+    return await axios.post(`${URL_BACK}/Support`, data);
   }
 }
 
@@ -282,6 +293,7 @@ export const postReviews =  (id,payload) => {
   } catch (error) {
     console.log(error.message)
   }
-  
 }
+
+
 

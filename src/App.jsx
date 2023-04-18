@@ -12,6 +12,7 @@ import {
 } from "./redux/actions";
 
 import { CreateProduct } from "./components/FormCreateProduct/CreateProduct";
+import { UpdateProduct } from "./components/FormCreateProduct/UpdateProduct";
 import Store from "./views/store/store";
 import About from "./views/About/About";
 import Cart from "./views/Cart/Cart";
@@ -25,12 +26,15 @@ import UsersDashBoard from "./views/Dashboard/Users/User";
 import PasswordReset from "./components/ActPassword/PasswordReset";
 import Reset from "./components/ActPassword/Reset";
 import { CreateReviews } from "./components/Reviews/CreateReviews";
-import RutePrivade from "./components/RutePrivade/RutePrivade";
+import RutePrivade from "./components/rutePrivade/RutePrivade";
+import ProductDashBoard from "./views/Dashboard/Product/Products";
 import Profile from "./views/Profile/Profile";
+import QA from './views/QA/QA'
+import Contact from './views/Contact/Contact'
 
-export default function App() {
+export default function App(){
+
   const dispatch = useDispatch();
-
   const data = useSelector((state) => state.User);
   const admin = data?.data_user?.rol;
 
@@ -52,7 +56,8 @@ export default function App() {
   return (
     <div className="App">
       <Routes>
-        {/* //Routas Users */}
+
+
         <Route exact path="/" element={<Home />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/Store" element={<Store />} />
@@ -67,13 +72,19 @@ export default function App() {
         <Route path="/passwordReset" element={<PasswordReset />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/QA" element={<QA />} />
+        <Route path="/Contact" element={<Contact />} />
+        
 
-        {/* //Rutas admin */}
+
         <Route element={<RutePrivade />}>
           <Route path="/DashBoard" element={<Dashboard />} />
           <Route path="/UsersDashBoard" element={<UsersDashBoard />} />
+          <Route path="/ProductsDash" element={<ProductDashBoard />} />
           <Route exact path="/form-product" element={<CreateProduct />} />
+          <Route exact path="/update-product/:id" element={<UpdateProduct />} />
         </Route>
+       
       </Routes>
     </div>
   );

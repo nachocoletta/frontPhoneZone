@@ -99,7 +99,7 @@ export default function Card({id, name, price, image, stock, brand}){
     }
     
     return(
-        <div class="w-full max-w-xl bg-white border border-gray-400 rounded-lg dark:bg-gray-900 dark:border-gray-700 transform transition duration-500 hover:scale-105 mt-3 mb-3" >
+        <div class="w-full max-w-xl bg-white border border-gray-400 rounded-lg dark:bg-gray-900 dark:border-gray-700 transform transition duration-500 hover:scale-105 mt-6 mb-3" >
 
     <a href="#">
         <img class="rounded-t-lg w-full h-[300px] text-center" src={image} alt="product image" onClick={() => handleClickDetail(id)} />
@@ -109,7 +109,7 @@ export default function Card({id, name, price, image, stock, brand}){
 
             <div className="flex flex-row justify-between">
                 <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mt-2">{name}</h5>
-                <BsFillHeartFill onClick={() => handleFavorites(id)} className="w-5 h-5 mt-3 cursor-pointer text-slate-900 dark:text-slate-100" />
+                <BsFillHeartFill onClick={() => handleFavorites(id)} className="w-5 h-5 mt-3 cursor-pointer text-slate-900 dark:text-gray-400" />
             </div>
 
         <div class="flex items-center mt-2.5 mb-5">
