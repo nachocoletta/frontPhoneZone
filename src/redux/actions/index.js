@@ -33,9 +33,9 @@ export const GET_ALL_ORDERS="GET_ALL_ORDERS"
 export const SEND_ORDER="SEND_ORDER"
 // const { URL_BACK } = process.env;
 
-const URL_BACK = `http://localhost:3001`
+// const URL_BACK = `http://localhost:3001`
 
-// const URL_BACK = 'phonezoneback-production.up.railway.app'
+const URL_BACK = 'https://phonezoneback-production.up.railway.app'
 
 export const POST_REVIEW="POST_REVIEW"
 
