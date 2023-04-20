@@ -22,7 +22,7 @@ const PasswordReset = () => {
     event.preventDefault();
     
       axios
-      .post('http://localhost:3001/user/passwordCode', { email })
+      .post('https://phonezoneback-production.up.railway.app/user/passwordCode', { email })
       .then((res) => {
          setMessage(res.data.message); 
          setTimeout(() => {

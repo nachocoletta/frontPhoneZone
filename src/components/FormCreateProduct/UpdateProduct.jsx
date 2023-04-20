@@ -161,7 +161,7 @@ export const UpdateProduct = () => {
       };
 
       console.log(updatedFormData);
-      await axios.put(`http://localhost:3001/product/${phone.id}`, updatedFormData);
+      await axios.put(`https://phonezoneback-production.up.railway.app/product/${phone.id}`, updatedFormData);
       setForm({
         name: "",
         description: "",

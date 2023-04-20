@@ -19,7 +19,7 @@ function Reset() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.post('http://localhost:3001/user/resetPassword', { email, code, password });
+        const response = await axios.post('https://phonezoneback-production.up.railway.app/user/resetPassword', { email, code, password });
         setMessage(response.data.message);
         navigate('/login')
       } catch (error) {

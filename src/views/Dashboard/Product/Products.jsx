@@ -25,7 +25,7 @@ function ProductDashBoard() {
 
   const update = async (id, boolean) => {
     const enabled = { enabled: !boolean };
-    await axios.put(`http://localhost:3001/product/enabled/${id}`, enabled);
+    await axios.put(`https://phonezoneback-production.up.railway.app/product/enabled/${id}`, enabled);
     setEnablement(!enablement)
     console.log(phones.enabled);
   };
