@@ -26,7 +26,7 @@ import UsersDashBoard from "./views/Dashboard/Users/User";
 import PasswordReset from "./components/ActPassword/PasswordReset";
 import Reset from "./components/ActPassword/Reset";
 import { CreateReviews } from "./components/Reviews/CreateReviews";
-import RutePrivade from "./components/rutePrivade/RutePrivade";
+import RutePrivade from "./components/RutePrivade/RutePrivade";
 import ProductDashBoard from "./views/Dashboard/Product/Products";
 import Profile from "./views/Profile/Profile";
 import QA from './views/QA/QA'
