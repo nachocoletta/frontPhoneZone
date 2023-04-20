@@ -8,7 +8,7 @@ export default function LinkPassword() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/user/forgotPassword", {
+      .post("https://phonezoneback-production.up.railway.app/user/forgotPassword", {
         email: email,
       })
       .then((response) => {

@@ -2,8 +2,8 @@ import axios from 'axios'
 
 
 
-const BACK_URL = `http://localhost:3001`
-const API_URL_2 = `http://localhost:3001/login`
+const BACK_URL = `https://phonezoneback-production.up.railway.app`
+const API_URL_2 = `https://phonezoneback-production.up.railway.app/login`
 class AuthService{
 
     Login(data){

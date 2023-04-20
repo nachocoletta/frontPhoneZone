@@ -9,7 +9,7 @@ export default function Auth() {
     const user = useSelector((state) => state.User);
 
     const handleClick = () => {
-      window.open('http://localhost:3001/auth/google/callback', '_blank');
+      window.open('https://phonezoneback-production.up.railway.app/auth/google/callback', '_blank');
     };
 
       return (

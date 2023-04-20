@@ -62,7 +62,7 @@ export default function App(){
 
     const getUser = async () => {
       try {
-        const url = `http://localhost:3001/auth/login/success`;
+        const url = `https://phonezoneback-production.up.railway.app/auth/login/success`;
         const data = await axios.get(url, { withCredentials: true });
     
         console.log("DATA", data);
